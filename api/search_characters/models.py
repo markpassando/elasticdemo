@@ -31,18 +31,14 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+class SearchIndex(models.Model):
+    """Many Users can share the same SearchIndex"""
+    name = models.CharField(max_length=255, unique=True)
 
 class User(AbstractBaseUser, PermissionsMixin):
-    """User with index permissions"""
+    """User has many index permissions"""
 
-    # No Array is sqlite, need to use int_list_validator
-    index_list = models.CharField(
-    max_length=999,
-    validators=[
-        int_list_validator(
-            sep=',',
-            allow_negative=False)],
-             null=True, blank=True, default=None)
+    index_list = models.ManyToManyField(SearchIndex)
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
