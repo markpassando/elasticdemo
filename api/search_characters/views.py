@@ -1,3 +1,17 @@
 from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
-# Create your views here.
+from . import models
+
+class GetUsers(APIView):
+
+  def get(self, request, format=None):
+        """Get all Users"""
+        try:
+            users = models.User.objects.all().values()
+
+            return Response({'data': list(users)})
+        except Exception as exception:
+            print(exception)
+            return Response({'error': str(exception)})
