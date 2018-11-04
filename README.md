@@ -1,4 +1,5 @@
 # elasticdemo
+v1.0.0
 
 ## Table of Contents
 - **Installation & Configuration**
@@ -32,27 +33,27 @@
 ### 3. ElasticSearch
 1. Install docker for mac: https://store.docker.com/editions/community/docker-ce-desktop-mac
 2. Pull the docker image: `docker pull docker.elastic.co/elasticsearch/elasticsearch:6.4.2`
-3. Start Dev Mode: `docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.4.2`
+3. In a new terminal, Start Dev Mode: `docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.4.2`
 4. **Seeding ElasticSearch**
    1. Inside the `/api` directory
    2. `./es_setup.sh`
 
 ### 4. Start the Django API
-1. Inside the `/api` directory
+1. In a new terminal, Inside the `/api` directory
 2. `sudo python manage.py runserver 0.0.0.0:80`
 3. To Test only the API visit `http://localhost:80/api/users/foo/?first_name=fred`
 
 ### 5. Django MVC WebApp
 1. Install Python 3.6X, this project uses Python 3.6.5
 2. Install virtualenv - `pip3 install virtualenv`
-3. Inside the `webapp/` directory
+3. In a new terminal, Inside the `webapp/` directory
 4. Create a virtualenv - `python3 -m venv env`
 5. Activate the virtualenv - `source env/bin/activate`
 6. Install dependencies - `pip install -r requirements.txt`
 7. Django may ask you to migrate but it is not nessessary. `python manage.py migrate`
 8. Run the webapp `python manage.py runserver`
 9. Open `http://127.0.0.1:8000` in the browser and you query for 'fred'
-**NOTE:** The webapp is hardcoded and the API must be running on `127.0.0.1:80`.
+**NOTE:** The webapp is hardcoded and the API must be running on `127.0.0.1:80`. You should be running three seperate terminals (Django API on port:80, Elasticsearch on port:9200 and Django MVC Webapp on port:8000)
 
 ## Developer Notes:
 ### Useful Elasticsearch CURLS
