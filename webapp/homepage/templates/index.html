@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Elasitcsearch Demo</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Elastic Demo</h1>
+  </div>
+
+  <div class="container">
+    <p>Assume you are logged in as user 'foo' and only have access to the Elasticsearch indexes of 'foo_index' and 'bar_index'.</p>
+    <p>Try searching for 'fred'</p>
+    <hr>
+    <div class="row">
+      <form action="/" method="GET" class=col-md-12>
+        <div class="input-group mb-3">
+          <input id="search-input" type="search" name="q" placeholder="First Name of a Character" class="form-control" />
+          <span class="input-group-append">
+            <input id="submit-btn" type="submit" value="Search" class="btn btn-primary" />
+          </span>
+        </div>
+      </form>
+    </div>
+
+    <div>
+      {% if characters and 'results' in characters %}
+      {% for character in characters.results %}
+      <div>
+        <p><b>{{ character.full_name }}</b><br />
+          {{ character.location }}</p>
+      </div>
+      {% endfor %}
+      {% elif 'error' in characters %}
+      <div class="alert alert-danger" role="alert">
+          {{ characters.error }}
+        </div>
+      {% endif %}
+    </div>
+
+  </div> <!-- /container -->
+
+
+
+</body>
+
+</html>
