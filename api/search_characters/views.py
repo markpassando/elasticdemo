@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from elasticsearch import Elasticsearch
 from django.core.exceptions import ObjectDoesNotExist
-
 from . import serializers, models
 
 
@@ -49,6 +48,8 @@ class CharacterSearch(APIView):
                         {'error': f"User '{authenticated_user}' does not exist!"},
                         status=status.HTTP_403_FORBIDDEN)
 
+                print(
+                    f"INFO - Successfully Authenticated User '{authenticated_user}''")
                 # Get index_list permissions
                 index_list = list(
                     user.index_list.values_list(
@@ -62,6 +63,7 @@ class CharacterSearch(APIView):
                     return Response(
                         {'error': 'Could not reach Elasticsearch'},
                         status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                print(f"INFO - Successfully connected to Elasticsearch")
 
                 # Query Elasticsearch with the authenticated_user's
                 # 'index_list' permissions and the 'first_name' query
