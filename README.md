@@ -2,14 +2,14 @@
 
 ## Table of Contents
 - **Installation & Configuration**
-	1. Python/Django API
-	2. SQLite DB
-	3. ElasticSearch
-	4. Start the Django API
-	5. Django MVC WebApp
+1. Python/Django API
+2. SQLite DB
+3. ElasticSearch
+4. Start the Django API
+5. Django MVC WebApp
 - **Developer Notes**
-	1. Useful Elasticsearch CURLS
-	2. create super user
+1. Useful Elasticsearch CURLS
+2. create super user
 
 ## Installation & Configuration
 ### 1. Python/Django API
