@@ -26,4 +26,4 @@ curl -X POST "localhost:9200/_bulk" -H 'Content-Type: application/json' -d'
 { "index" : { "_index" : "baz_index", "_type" : "docs", "_id" : "12" } }
 { "first_name" : "fred", "last_name" : "durst", "location" : "limp bizkit" }
 '
-echo "Elasticsearch SETUP IS COMPLETE" 
+echo -e "\nElasticsearch SETUP IS COMPLETE, CHECK FOR ERRORS" 

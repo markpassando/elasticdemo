@@ -1,5 +1,5 @@
 # elasticdemo
-v1.0.0
+v1.0.1
 
 ## Table of Contents
 - **Installation & Configuration**
@@ -40,7 +40,10 @@ v1.0.0
 
 ### 4. Start the Django API
 1. In a new terminal, Inside the `/api` directory
-2. `sudo python manage.py runserver 0.0.0.0:80`
+2. [Django docs for runserver](https://docs.djangoproject.com/en/2.1/ref/django-admin/#runserver)
+	Port 80 is a reservered port for http. The Django development server does not have permissions to run on low port numbers.
+	In order to run on port 80, you must `runserver` with `sudo`.
+	`sudo python manage.py runserver 0.0.0.0:80`
 3. To Test only the API visit `http://localhost:80/api/users/foo/?first_name=fred`
 
 ### 5. Django MVC WebApp
